@@ -24,3 +24,15 @@ materials["Кирпич"] = materials["Кирпич"] * 1.1
 print("\nПосле изменений:")
 for name, price in materials.items():
     print(name, "-", round(price, 2), "руб")
+
+    # Удаление одного материала
+materials.pop("Песок")
+
+# Расчет средней цены
+average_price = sum(materials.values()) / len(materials)
+
+print("\nПосле удаления:")
+for name, price in materials.items():
+    print(name, "-", round(price, 2), "руб")
+
+print("\nСредняя цена:", round(average_price, 2), "руб")
