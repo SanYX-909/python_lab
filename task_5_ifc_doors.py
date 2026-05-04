@@ -55,4 +55,4 @@ print("\n=== УЗКИЕ ДВЕРИ ===")
 for name, width, height in narrow_doors:
     print("Дверь:", name, "Ширина", width, "мм", "Высота", height)
 
-    print("\nКоличество узких дверей:", len(narrow_doors))
+print("\nКоличество узких дверей:", len(narrow_doors))
