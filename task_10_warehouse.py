@@ -1,19 +1,19 @@
-# Задача 10: Система учета склада
+# Задача 10: Система учета склада (обновленная версия)
 
 warehouse = {
-    "Кирпич": {"quantity": 5000, "price": 12.50, "min_quantity": 1000},
-    "Цемент": {"quantity": 120, "price": 450.00, "min_quantity": 50},
-    "Песок": {"quantity": 8, "price": 800.00, "min_quantity": 10},
-    "Арматура": {"quantity": 30, "price": 48000.00, "min_quantity": 20},
-    "Бетон": {"quantity": 45, "price": 4200.00, "min_quantity": 15}
+    "Ламинат": {"quantity": 85, "price": 1350.00, "min_quantity": 60},
+    "Краска": {"quantity": 40, "price": 2200.00, "min_quantity": 50},
+    "Шпаклевка": {"quantity": 25, "price": 480.00, "min_quantity": 30},
+    "Плитка": {"quantity": 120, "price": 1750.00, "min_quantity": 100},
+    "Профиль": {"quantity": 18, "price": 320.00, "min_quantity": 25}
 }
 
-print("=" * 65)
+print("=" * 70)
 print("СИСТЕМА УЧЁТА СКЛАДА")
-print("=" * 65)
+print("=" * 70)
 
-print("Материал | Кол-во | Цена | Мин. | Стоимость")
-print("-" * 65)
+print("Материал   | Кол-во | Цена    | Мин. | Стоимость")
+print("-" * 70)
 
 total_value = 0
 most_expensive = ("", 0)
@@ -27,19 +27,19 @@ for name, data in warehouse.items():
     cost = q * p
     total_value += cost
 
-    # Проверка самого дорогого
+    # Самый дорогой материал (по общей стоимости)
     if cost > most_expensive[1]:
         most_expensive = (name, cost)
 
-    # Проверка критического остатка
+    # Критические остатки
     warning = ""
     if q < m:
         warning = "⚠ КРИТИЧНО!"
         critical.append(f"{name}: {q} < {m}")
 
-    print(f"{name:8} | {q:6} | {p:6.2f} | {m:4} | {cost:10.2f} {warning}")
+    print(f"{name:10} | {q:6} | {p:7.2f} | {m:4} | {cost:10.2f} {warning}")
 
-print("-" * 65)
+print("-" * 70)
 print(f"ОБЩАЯ СТОИМОСТЬ: {total_value:.2f} руб")
 
 print(f"Самый дорогой: {most_expensive[0]} ({most_expensive[1]:.2f} руб)")
@@ -54,8 +54,8 @@ else:
 # === Выдача материала ===
 print("\n=== ВЫДАЧА МАТЕРИАЛА ===")
 
-material = "Цемент"
-issued = 25
+material = "Краска"
+issued = 15
 
 if material in warehouse:
     before = warehouse[material]["quantity"]
