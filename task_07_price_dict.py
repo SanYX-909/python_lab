@@ -13,3 +13,14 @@ materials = {
 print("Исходный список материалов:")
 for name, price in materials.items():
     print(name, "-", price, "руб")
+
+    # Добавление новых материалов
+materials["Гипс"] = 300
+materials["Дерево"] = 1500
+
+# Изменение цены (+10%)
+materials["Кирпич"] = materials["Кирпич"] * 1.1
+
+print("\nПосле изменений:")
+for name, price in materials.items():
+    print(name, "-", round(price, 2), "руб")
