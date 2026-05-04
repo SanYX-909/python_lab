@@ -24,3 +24,18 @@ for data in warehouse.values():
     total_value += data["quantity"] * data["price"]
 
 print("\nОбщая стоимость склада:", total_value, "руб")
+
+print("\n=== ДЕТАЛИ СКЛАДА ===")
+
+for name, data in warehouse.items():
+    total = data["quantity"] * data["price"]
+
+    status = "OK"
+    if data["quantity"] < data["min_quantity"]:
+        status = "⚠️ МАЛО"
+
+    print(f"{name}:")
+    print(f"  Количество: {data['quantity']}")
+    print(f"  Цена: {data['price']} руб")
+    print(f"  Стоимость: {total} руб")
+    print(f"  Статус: {status}")
