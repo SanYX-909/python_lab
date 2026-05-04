@@ -38,6 +38,24 @@ for addr in cleaned_addresses:
     addr = addr.replace("г ", "г. ")
     normalized_addresses.append(addr)
 
+normalized_addresses = []
+
+for addr in cleaned_addresses:
+    # Нормализация "г."
+    addr = addr.replace("г.", "г. ")
+    addr = addr.replace("г ", "г. ")
+
+    # Нормализация улиц и проспектов
+    addr = addr.replace("ул.", "ул. ")
+    addr = addr.replace("пр.", "пр. ")
+    addr = addr.replace("д.", "д. ")
+
+    # Убираем двойные пробелы (несколько раз для надежности)
+    while "  " in addr:
+        addr = addr.replace("  ", " ")
+
+    normalized_addresses.append(addr)
+
 print("\nНормализованные адреса:")
 for addr in normalized_addresses:
     print(addr)
