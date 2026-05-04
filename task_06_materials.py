@@ -13,3 +13,10 @@ materials.append("Бетон")
 materials.append("Гипс")
 
 print("\nПосле добавления:", materials)
+
+# Удаление второго элемента
+materials.pop(1)
+
+# Итог
+print("\nИтоговый список:", materials)
+print("Количество материалов:", len(materials))
