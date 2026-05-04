@@ -20,3 +20,8 @@ only_2 = warehouse_2 - warehouse_1
 print("\nОбщие материалы:", common)
 print("Только на складе 1:", only_1)
 print("Только на складе 2:", only_2)
+
+# Объединение
+all_materials = warehouse_1 | warehouse_2
+
+print("\nВсе материалы:", all_materials)
