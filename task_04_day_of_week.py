@@ -4,20 +4,18 @@
 day_number = int(input("Введите число от 1 до 7: "))
 
 # Определение дня недели
-if day_number == 1:
-    day = "Понедельник"
-elif day_number == 2:
-    day = "Вторник"
-elif day_number == 3:
-    day = "Среда"
-elif day_number == 4:
-    day = "Четверг"
-elif day_number == 5:
-    day = "Пятница"
-elif day_number == 6:
-    day = "Суббота"
-elif day_number == 7:
-    day = "Воскресенье"
+days = {
+    1: "Понедельник",
+    2: "Вторник",
+    3: "Среда",
+    4: "Четверг",
+    5: "Пятница",
+    6: "Суббота",
+    7: "Воскресенье"
+}
+
+if day_number in days:
+    day = days[day_number]
 else:
     day = "Некорректный ввод"
 
