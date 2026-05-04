@@ -30,3 +30,9 @@ else:
     day_type = ""
 
 print("Тип дня:", day_type)
+
+# Режим работы
+if day_number in [1, 2, 3, 4, 5]:
+    print("Режим:", "8:00 - начало смены")
+elif day_number in [6, 7]:
+    print("Режим:", "Отдых")
