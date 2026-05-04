@@ -17,3 +17,10 @@ for name, data in warehouse.items():
 for name, data in warehouse.items():
     if data["quantity"] < data["min_quantity"]:
         print(name, "- осталось", data["quantity"])
+
+        total_value = 0
+
+for data in warehouse.values():
+    total_value += data["quantity"] * data["price"]
+
+print("\nОбщая стоимость склада:", total_value, "руб")
