@@ -43,14 +43,16 @@ for door in doors:
     if width is not None:
         width_mm = round(width * 1000)  # IFC часто в метрах → переводим в мм
 
-        # 🔥 Условие узких дверей
+        # Условие узких дверей
         if width_mm < min_width:
             narrow_doors.append((name, width_mm, height))
 
         print("Дверь:", name, "Ширина", width_mm, "мм", "Высота", height)
 
-# 🔥 Вывод узких дверей
+# Вывод узких дверей
 print("\n=== УЗКИЕ ДВЕРИ ===")
 
 for name, width, height in narrow_doors:
     print("Дверь:", name, "Ширина", width, "мм", "Высота", height)
+
+    print("\nКоличество узких дверей:", len(narrow_doors))
