@@ -11,3 +11,9 @@ warehouse = {
 print("Склад:")
 for name, data in warehouse.items():
     print(name, "-", data)
+
+    print("\nТовары ниже минимального запаса:")
+
+for name, data in warehouse.items():
+    if data["quantity"] < data["min_quantity"]:
+        print(name, "- осталось", data["quantity"])
