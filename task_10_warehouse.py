@@ -1,38 +1,68 @@
-# Задача 10: Склад (финальная версия)
+# Задача 10: Система учета склада
 
 warehouse = {
-    "Газоблок": {"quantity": 320, "price": 950.0, "min_quantity": 200},
-    "Краска": {"quantity": 45, "price": 1200.0, "min_quantity": 50},
-    "Плитка": {"quantity": 120, "price": 1800.0, "min_quantity": 100},
-    "Гипсокартон": {"quantity": 60, "price": 400.0, "min_quantity": 70},
-    "Профиль": {"quantity": 25, "price": 300.0, "min_quantity": 30}
+    "Кирпич": {"quantity": 5000, "price": 12.50, "min_quantity": 1000},
+    "Цемент": {"quantity": 120, "price": 450.00, "min_quantity": 50},
+    "Песок": {"quantity": 8, "price": 800.00, "min_quantity": 10},
+    "Арматура": {"quantity": 30, "price": 48000.00, "min_quantity": 20},
+    "Бетон": {"quantity": 45, "price": 4200.00, "min_quantity": 15}
 }
 
-print("=== СОСТОЯНИЕ СКЛАДА ===\n")
+print("=" * 65)
+print("СИСТЕМА УЧЁТА СКЛАДА")
+print("=" * 65)
+
+print("Материал | Кол-во | Цена | Мин. | Стоимость")
+print("-" * 65)
 
 total_value = 0
+most_expensive = ("", 0)
+critical = []
 
 for name, data in warehouse.items():
-    quantity = data["quantity"]
-    price = data["price"]
-    min_q = data["min_quantity"]
+    q = data["quantity"]
+    p = data["price"]
+    m = data["min_quantity"]
 
-    item_total = quantity * price
-    total_value += item_total
+    cost = q * p
+    total_value += cost
 
-    # Определение статуса
-    if quantity < min_q:
-        status = "❗ НИЖЕ МИНИМУМА"
-    else:
-        status = "OK"
+    # Проверка самого дорогого
+    if cost > most_expensive[1]:
+        most_expensive = (name, cost)
 
-    print(f"{name}:")
-    print(f"  Количество: {quantity}")
-    print(f"  Цена: {price} руб")
-    print(f"  Минимум: {min_q}")
-    print(f"  Стоимость: {item_total} руб")
-    print(f"  Статус: {status}")
-    print()
+    # Проверка критического остатка
+    warning = ""
+    if q < m:
+        warning = "⚠ КРИТИЧНО!"
+        critical.append(f"{name}: {q} < {m}")
 
-print("=== ИТОГО ===")
-print("Общая стоимость склада:", round(total_value, 2), "руб")
+    print(f"{name:8} | {q:6} | {p:6.2f} | {m:4} | {cost:10.2f} {warning}")
+
+print("-" * 65)
+print(f"ОБЩАЯ СТОИМОСТЬ: {total_value:.2f} руб")
+
+print(f"Самый дорогой: {most_expensive[0]} ({most_expensive[1]:.2f} руб)")
+
+print("\n⚠ КРИТИЧЕСКИЕ ОСТАТКИ:")
+if critical:
+    for item in critical:
+        print("-", item)
+else:
+    print("Нет")
+
+# === Выдача материала ===
+print("\n=== ВЫДАЧА МАТЕРИАЛА ===")
+
+material = "Цемент"
+issued = 25
+
+if material in warehouse:
+    before = warehouse[material]["quantity"]
+    warehouse[material]["quantity"] -= issued
+    after = warehouse[material]["quantity"]
+
+    print(f"✓ Выдано {issued} единиц '{material}'")
+    print(f"Остаток: {before} → {after}")
+else:
+    print("Материал не найден")
