@@ -36,3 +36,7 @@ for name, price in materials.items():
     print(name, "-", round(price, 2), "руб")
 
 print("\nСредняя цена:", round(average_price, 2), "руб")
+
+print("\nОтсортировано по цене:")
+for name, price in sorted(materials.items(), key=lambda x: x[1]):
+    print(name, "-", price, "руб")
