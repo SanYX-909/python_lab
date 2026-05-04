@@ -7,3 +7,9 @@ materials = ["Кирпич", "Цемент", "Песок", "Щебень", "Ар
 print("Первый материал:", materials[0])
 print("Последний материал:", materials[-1])
 print("Средние материалы:", materials[1:-1])
+
+# Добавление новых материалов
+materials.append("Бетон")
+materials.append("Гипс")
+
+print("\nПосле добавления:", materials)
