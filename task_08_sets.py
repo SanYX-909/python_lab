@@ -1,27 +1,32 @@
-# Задача 8: Работа с множествами
+# Задача 8: Анализ заказов
 
-# Материалы на складе 1
-warehouse_1 = {"Кирпич", "Цемент", "Песок", "Арматура"}
+# Материалы трех подрядчиков
+contractor_1 = {"Ламинат", "Краска", "Шпаклевка", "Грунтовка"}
+contractor_2 = {"Краска", "Плитка", "Грунтовка", "Клей"}
+contractor_3 = {"Грунтовка", "Клей", "Гипсокартон", "Ламинат"}
 
-# Материалы на складе 2
-warehouse_2 = {"Цемент", "Песок", "Бетон", "Гипс"}
+print("Подрядчик 1:", contractor_1)
+print("Подрядчик 2:", contractor_2)
+print("Подрядчик 3:", contractor_3)
 
-# Вывод
-print("Склад 1:", warehouse_1)
-print("Склад 2:", warehouse_2)
+# 1. Все уникальные материалы
+all_materials = contractor_1 | contractor_2 | contractor_3
 
-# Общие материалы
-common = warehouse_1 & warehouse_2
+# 2. Общие для всех
+common_all = contractor_1 & contractor_2 & contractor_3
 
-# Уникальные
-only_1 = warehouse_1 - warehouse_2
-only_2 = warehouse_2 - warehouse_1
+# 3. Только у первого
+only_first = contractor_1 - contractor_2 - contractor_3
 
-print("\nОбщие материалы:", common)
-print("Только на складе 1:", only_1)
-print("Только на складе 2:", only_2)
+# 4. Ровно у двух
+only_two = (
+    (contractor_1 & contractor_2) |
+    (contractor_1 & contractor_3) |
+    (contractor_2 & contractor_3)
+) - common_all
 
-# Объединение
-all_materials = warehouse_1 | warehouse_2
-
-print("\nВсе материалы:", all_materials)
+print("\n=== АНАЛИЗ ===")
+print("Все уникальные:", all_materials)
+print("Общие для всех:", common_all)
+print("Только у первого:", only_first)
+print("Ровно у двух:", only_two)
