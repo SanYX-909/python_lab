@@ -21,6 +21,15 @@ else:
 discount_amount = total * discount / 100
 final_price = total - discount_amount
 
+# Округление
+total = round(total, 2)
+discount_amount = round(discount_amount, 2)
+final_price = round(final_price, 2)
+
+print("\n=== РАСЧЁТ СКИДКИ ===")
+print("Цена за единицу:", price, "руб")
+print("Количество:", quantity)
+print("Общая сумма:", total, "руб")
 print("Скидка:", discount, "%")
-print("Сумма скидки:", discount_amount, "руб")
-print("Итого к оплате:", final_price, "руб")
+print("Размер скидки:", discount_amount, "руб")
+print("К оплате:", final_price, "руб")
